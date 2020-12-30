@@ -26,6 +26,9 @@
   },
   "homepage": "https://github.com/jbakse/bookbuilder#readme",
   "dependencies": {
+    "markdown-it": "^12.0.4"
+  },
+  "devDependencies": {
     "np": "^7.1.0"
   }
 }
