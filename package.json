@@ -2,7 +2,10 @@
   "name": "@jbakse/bookbuilder",
   "version": "0.0.4",
   "description": "Bookbuilder converts Markdown files into a static HTML site.",
-  "main": "index.js",
+  "main": "./lib/index.js",
+  "bin": {
+    "buildbook": "./bin/index.js"
+  },
   "scripts": {
     "test": "echo \"No test specified\" && exit 0",
     "np": "np"
