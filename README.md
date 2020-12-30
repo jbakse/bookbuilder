@@ -1,3 +1,3 @@
 # Bookbuilder
 
-Bookbuilder converts Markdown to static HTML.
+Bookbuilder converts Markdown files into a static HTML site.
