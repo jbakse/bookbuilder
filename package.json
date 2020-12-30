@@ -1,6 +1,6 @@
 {
   "name": "@jbakse/bookbuilder",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Bookbuilder converts Markdown files into a static HTML site.",
   "main": "./lib/index.js",
   "bin": {
