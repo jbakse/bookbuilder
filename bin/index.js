@@ -1,28 +1,28 @@
 #!/usr/bin/env node
 
-var x;
+// var glob = require("glob");
 
-let fs = require("fs");
+const fs = require("fs");
 const { promisify } = require("util");
 
 const bookbuilder = require("../lib/index");
 
 async function readFile(path) {
-  let fs_readFile = promisify(fs.readFile);
-  let buffer = await fs_readFile(path);
+  const fs_readFile = promisify(fs.readFile);
+  const buffer = await fs_readFile(path);
   return buffer.toString("utf8");
 }
 
 async function writeFile(path, data) {
-  let fs_writeFile = promisify(fs.writeFile);
+  const fs_writeFile = promisify(fs.writeFile);
   await fs_writeFile(path, data);
 }
 
 async function main() {
   console.log("Hello, Bookbuilder!!");
 
-  let source_path = "./src/index.md";
-  let dest_path = "./dist/index.html";
+  const source_path = "./content/index.md";
+  const dest_path = "./dist/index.html";
   let source_markdown;
 
   try {
@@ -33,14 +33,13 @@ async function main() {
     return;
   }
 
-  let html = bookbuilder.convert(source_markdown);
+  const html = bookbuilder.convert(source_markdown);
 
   try {
     await writeFile(dest_path, html);
   } catch (err) {
     console.log(`An error occured writing file '${dest_path}'`);
     console.log(err);
-    return;
   }
 }
 
