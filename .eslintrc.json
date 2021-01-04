@@ -10,6 +10,6 @@
   },
   "rules": {
     "comma-dangle": ["error", "always-multiline"],
-    "camelcase": ["never"]
+    "camelcase": 0
   }
 }
