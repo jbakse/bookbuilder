@@ -4,8 +4,12 @@ Bookbuilder converts Markdown files into a static HTML site.
 
 # Tooling
 
+Things you probably want to do:
+
 - Work in VSCode
 - Use the VSCode Prettier extension to format code
+- Use Liveserver to preview results
+- Set workspace config: "liveServer.settings.root": "dist"
 
 # Features
 
