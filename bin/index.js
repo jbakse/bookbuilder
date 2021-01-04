@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 const settings = {
-  input_directory: "content",
-  output_directory: "../compformnet/dist",
+  content_directory: "content",
+  output_directory: "dist",
   public_directory: "public",
 };
 
@@ -27,20 +27,22 @@ function clean() {
   execute_command(`rm -r ${settings.output_directory}; mkdir ${settings.output_directory};`);
 }
 
+function copy_content() {
+  console.log(`Copying content directory: ${settings.content_directory}`);
+  execute_command(`cp -a ${settings.content_directory}/. ${settings.output_directory}`);
+}
+
 function copy_public() {
   console.log(`Copying public directory: ${settings.public_directory}`);
   execute_command(`cp -a ${settings.public_directory}/. ${settings.output_directory}`);
-  // about the trailing dot:
-  // `cp -a path/to/a path/to/b` would create a path/to/b/a directory and fill it
-  // `cp -a path/to/a/. path/to/b` prevents cp from creating b/a directory, fills b
 }
 
 function convert_markdown() {
   // Convert Markdown
   console.log("Converting Markdown Files");
-  glob(`${settings.input_directory}/**/*.md`, (err, paths) => {
+  glob(`${settings.content_directory}/**/*.md`, (err, paths) => {
     if (err) {
-      console.log(`An error occured mataching files '${settings.input_directory}/**/*.md'`);
+      console.log(`An error occured mataching files '${settings.content_directory}/**/*.md'`);
       return;
     }
     handleMarkdownFiles(paths);
@@ -49,7 +51,7 @@ function convert_markdown() {
 
 async function handleMarkdownFiles(paths) {
   for (const src_path of paths) {
-    let dest_path = replaceAtStart(src_path, settings.input_directory, settings.output_directory);
+    let dest_path = replaceAtStart(src_path, settings.content_directory, settings.output_directory);
     dest_path = replaceAtEnd(dest_path, ".md", ".html");
 
     console.log(`${src_path} -> ${dest_path}`);
@@ -58,11 +60,18 @@ async function handleMarkdownFiles(paths) {
   }
 }
 
+function compile_sass() {
+  console.log("Compiling Sass");
+  execute_command("sass style/index.scss dist/style.css");
+}
+
 async function main() {
   console.log("Hello, Bookbuilder!!!!");
 
   clean();
+  copy_content();
   copy_public();
+  compile_sass();
   convert_markdown();
 }
 

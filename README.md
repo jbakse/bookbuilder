@@ -17,3 +17,10 @@ Things you probably want to do:
 - Markdown to HTML conversion with `markdown-it`
 - Layouts with `pug`
 - Frontmatter Parsing with `gray-matter`
+
+# Markdown Features
+
+- markdown-it-anchor
+- markdown-it-classy
+- markdown-it-deflist
+- markdown-it-mark
