@@ -33,6 +33,7 @@
     "markdown-it-attrs": "^4.0.0",
     "markdown-it-classy": "^0.2.0",
     "markdown-it-deflist": "^2.1.0",
+    "markdown-it-include": "^2.0.0",
     "markdown-it-mark": "^3.0.1",
     "pug": "^3.0.0",
     "sass": "^1.32.0"
