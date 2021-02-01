@@ -42,7 +42,7 @@ function convert_markdown() {
   console.log("Converting Markdown Files");
   glob(`${settings.content_directory}/**/*.md`, (err, paths) => {
     if (err) {
-      console.log(`An error occured mataching files '${settings.content_directory}/**/*.md'`);
+      console.log(`An error occurred matching files '${settings.content_directory}/**/*.md'`);
       return;
     }
     handleMarkdownFiles(paths);
